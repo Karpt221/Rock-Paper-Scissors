@@ -1,9 +1,30 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function playGame(){
 
 }
 
-function playRound(){
+function playRound(humanChoice, computerChoice){
+    console.log(`You: ${humanChoice} vs Computer: ${computerChoice}`);
 
+    if(humanChoice == computerChoice){
+        console.log('Nobody won!');
+    }
+    else if(humanChoice == "rock" && computerChoice == "scissors" ||
+            humanChoice == "scissors" && computerChoice == "paper" ||
+            humanChoice == "paper" && computerChoice == "rock")
+    {
+        console.log('You won!');
+        humanScore++;
+    }
+    else if(humanChoice == "rock" && computerChoice == "paper" ||
+            humanChoice == "scissors" && computerChoice == "rock" ||
+            humanChoice == "paper" && computerChoice == "scissors")
+    {
+        console.log('You lost!');
+        computerScore++;
+    }
 }
 
 function isValidChoice(choice){
@@ -29,9 +50,9 @@ function getHumanChoice(){
 }
 
 function getComputerChoice(){
-    let computerChoice = Math.floor(Math.random() * 3);
+    let choice = Math.floor(Math.random() * 3);
 
-    switch(computerChoice){
+    switch(choice){
         case 0: return "rock";
         case 1: return "paper";
         case 2: return "scissors";
@@ -39,5 +60,5 @@ function getComputerChoice(){
 }
 
 //playGame();
-console.log(getComputerChoice());
+console.log(playRound("rock", "paper"));
 
