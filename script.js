@@ -6,12 +6,19 @@ function playRound(){
 
 }
 
+function isValidChoice(choice){
+    if (choice == null) return false;
+    choice = choice.toLowerCase();
+    if(choice != "rock" && choice != "paper" && choice != "scissors"){
+        return false;
+    }
+    return true;
+}
+
 function getHumanChoice(){
     let choice;
-    let isValidChoice;
     while(true){
         choice = prompt("Choose 'rock', 'paper' or 'scissors':", '');
-        choice = choice.toLowerCase();
         if(isValidChoice(choice)){
             return choice;
         }else{
@@ -21,16 +28,16 @@ function getHumanChoice(){
     }
 }
 
-function isValidChoice(choice){
-    if(choice != "rock" && choice != "paper" && choice != "scissors"){
-        return false;
-    }
-    return true;
-}
-
 function getComputerChoice(){
+    let computerChoice = Math.floor(Math.random() * 3);
 
+    switch(computerChoice){
+        case 0: return "rock";
+        case 1: return "paper";
+        case 2: return "scissors";
+    }
 }
 
 //playGame();
-getHumanChoice();
+console.log(getComputerChoice());
+
