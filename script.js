@@ -1,9 +1,6 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function playGame(){
-    // let humanScore = 0;
-    // let computerScore = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
     console.log("Let the game begin!");
 
@@ -12,7 +9,15 @@ function playGame(){
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
 
-        playRound(humanChoice, computerChoice);
+        let winner = playRound(humanChoice, computerChoice);
+        switch(winner){
+            case "nobody": 
+            break;
+            case "human": humanScore++;
+            break;
+            case "computer": computerScore++;
+            break;
+        }
     }
     console.log(`Your score: ${humanScore} Computer score: ${computerScore}`);
     if(humanScore > computerScore){
@@ -31,20 +36,21 @@ function playRound(humanChoice, computerChoice){
     if(humanChoice == computerChoice)
     {
         console.log('Nobody won this round!');
+        return "nobody";
     }
     else if(humanChoice == "rock" && computerChoice == "scissors" ||
             humanChoice == "scissors" && computerChoice == "paper" ||
             humanChoice == "paper" && computerChoice == "rock")
     {
         console.log('You won this round!');
-        humanScore++;
+        return "human";
     }
     else if(humanChoice == "rock" && computerChoice == "paper" ||
             humanChoice == "scissors" && computerChoice == "rock" ||
             humanChoice == "paper" && computerChoice == "scissors")
     {
         console.log('You lost this round!');
-        computerScore++;
+        return "computer";
     }
 }
 
