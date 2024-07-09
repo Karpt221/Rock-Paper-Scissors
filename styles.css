@@ -1,0 +1,9 @@
+.score-container{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+
+.visibility{
+    display: none;
+}
